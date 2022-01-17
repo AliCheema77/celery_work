@@ -6,10 +6,6 @@ Install all the packages from requirements.txt
 pip3 install -r requirements.txt
 ```
 
-For making migrations 
-```
-python3 manage.py makemigrations
-```
 To apply migrations
 ```
 python3 manage.py migrate
@@ -30,4 +26,16 @@ Run celery beat
 ```
 celery -A django_celery beat -l INFO
 ```
-# django_celery
+For making Docker build
+```
+docker-compose build
+```
+
+Run docker build
+```
+docker-compose up
+```
+To shutdown docker 
+```
+docker-compose down
+```
