@@ -1,0 +1,49 @@
+{% load crispy_forms_filters %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{{ form.media }}
+<html>
+<head>
+    <title>Schedule Time</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+
+</head>
+ <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="mt-2">Django Send Email User Specific Time</h1>
+          <hr class="mt-0 mb-4">
+            {% if messages %}
+              <div class="row">
+              <div class="col-sm-12 col-sm-offset-3">
+                  {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }}" role="alert">
+                      <p>{{ message }}</p>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+           <form method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-6">
+                {{ form.email|as_crispy_field }}
+              </div>
+              <div class="col-6">
+                {{ form.schedule_time|as_crispy_field }}
+              </div>
+            </div>
+                {{ form.thrashed|as_crispy_field }}
+            <button type="submit" class="btn btn-success">Save person</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
